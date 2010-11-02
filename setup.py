@@ -11,7 +11,7 @@
 # FOR A PARTICULAR PURPOSE.
 #
 ##############################################################################
-"""Setup for zojax.jquery.lightbox package
+"""Setup for zojax.jquery.mbgallery package
 
 $Id$
 """
@@ -21,12 +21,12 @@ from setuptools import setup, find_packages
 def read(*rnames):
     return open(os.path.join(os.path.dirname(__file__), *rnames)).read()
 
-version='1.3.5.3dev'
+version='1.0.1dev'
 
 
-setup(name='zojax.jquery.lightbox',
+setup(name='zojax.jquery.mbgallery',
       version=version,
-      description="JQuery LightBox Plugin",
+      description="JQuery mbgallery Plugin",
       long_description=(
           'Detailed Documentation\n' +
           '======================\n'
