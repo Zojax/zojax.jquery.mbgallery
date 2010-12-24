@@ -202,6 +202,7 @@
       }
       galleryNav.find(".photoCounter").html((gallery.idx+1)+" / <b>"+gallery.images.length+"</b>");
       if(galleryDesc.html()=="") galleryDesc.slideUp();
+      if(galleryComments.html()=="") galleryComments.slideUp();
       if(gallery.options.onChangePhoto) gallery.options.onChangePhoto();
     },
     buildThumbs:function(){
