@@ -167,6 +167,7 @@
       var galleryImg=$("#"+gallery.galleryID).find(".galleryImg");
       var photoTitle=$("#"+gallery.galleryID).find(".photoTitle");
       var galleryDesc=$("#"+gallery.galleryID).find(".galleryDesc");
+      var galleryComments=$("#"+gallery.galleryID).find(".galleryComments");
       var galleryScreen=$("#"+gallery.galleryID);
       var galleryNav=$("#"+gallery.galleryID).find(".galleryNav");
       var newImg= $("<img/>").addClass("highRes").attr({src:gallery.images[gallery.idx].full+rndVar}).css({position:"absolute",top:0,left:0}).hide();
