@@ -38,6 +38,7 @@
       thumbnailSelector: ".imgThumb",
       titleSelector: ".imgTitle",
       descSelector: ".imgDesc",
+      commentsSelector: ".imgComments",
 
       minWidth: 300,
       minHeight: 200,
@@ -75,9 +76,10 @@
       var overlay=$("<div/>").addClass("mb_overlay").one("click",function(){$(gallery).mb_closeGallery();}).css({opacity:gallery.options.overlayOpacity,background: gallery.options.overlayBackground}).hide();
       var galleryScreen= $("<div/>").attr("id",gallery.galleryID).addClass("galleryScreen").addClass("mbGall_"+gallery.options.skin);
       var galleryDesc=$("<div/>").addClass("galleryDesc").css({opacity:.7}).hide();
+      var galleryComments=$("<div/>").addClass("galleryComments").css({opacity:.7}).hide();
       var galleryTitle=$("<div/>").addClass("galleryTitle").html(gallery.options.galleryTitle);
       var galleryImg= $("<div/>").addClass("galleryImg")
-              .hover(function(){if (galleryDesc.html()) galleryDesc.slideDown();},function(){galleryDesc.slideUp();})
+              .hover(function(){if (galleryDesc.html()) galleryDesc.slideDown();if (galleryComments.html()) galleryComments.slideDown();},function(){galleryDesc.slideUp();galleryComments.slideUp();})
               .dblclick(function(){if (gallery.sliding) $(gallery).mb_stopSlide(); else $(gallery).mb_startSlide();});
       var galleryRaster= $("<div/>").addClass("galleryRaster").css({width:"100%",height:"100%"});
       var galleryLoader= $("<div/>").addClass("loader").mb_bringToFront().css("opacity",.7).hide();
@@ -107,6 +109,7 @@
         galleryImg.append(galleryRaster).mb_bringToFront();
       galleryImg.append(galleryThumbs);
       galleryImg.append(galleryDesc);
+      galleryImg.append(galleryComments);
       if(gallery.options.containment=="body")
         galleryScreen.css({
           minWidth:gallery.options.minWidth,
@@ -141,6 +144,7 @@
         photo.fullHeight= $(this).attr("h")?$(this).attr("h"):false;
         photo.title= $(this).nextAll(gallery.options.titleSelector).html();
         photo.description= $(this).nextAll(gallery.options.descSelector).html();
+        photo.comments= $(this).nextAll(gallery.options.commentsSelector).html();
         gallery.images.push(photo);
       });
     },
@@ -187,6 +191,7 @@
       newImg.next("img").fadeOut("slow",function(){$(this).remove();});
       photoTitle.fadeOut("slow",function(){photoTitle.html(gallery.images[gallery.idx].title); photoTitle.fadeIn();});
       galleryDesc.html(gallery.images[gallery.idx].description);
+      galleryComments.html(gallery.images[gallery.idx].comments);
       if(gallery.sliding){
         galleryNav.find(".startStopIcon").addClass("selected");
         gallery.startGallery=setTimeout(function(){
